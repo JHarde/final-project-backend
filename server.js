@@ -25,7 +25,7 @@ const Highscore = new mongoose.model('Highscore', {
 
 // Mongoose model for questions
 const Questions = new mongoose.model('Questions', {
-	id: { type: Number },
+	description: { type: String },
 	question: {
 		type: String,
 		answers: [
@@ -35,7 +35,9 @@ const Questions = new mongoose.model('Questions', {
 				isCorrect: { type: Boolean },
 			},
 		],
+		correctAnswer: { type: Array },
 	},
+	why: { type: String },
 });
 
 // Add middlewares to enable cors and json body parsing

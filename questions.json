@@ -1,0 +1,78 @@
+({
+	"question": "Vad kan du göra för miljön när du borstar tänderna?",
+	"description": "Välj ett alternativ",
+	"answers": [
+		{
+			"id": 1,
+			"answer": "Låta vattnet rinna"
+		},
+		{
+			"id": 2,
+			"answer": "Använda kallt vatten"
+		},
+		{
+			"id": 3,
+			"answer": "Stänga av vattnet"
+		}
+	],
+	"correctAnswer": [3],
+	"why": "Stänger du av kranen under de tre minuterna du borstar sparas 36 liter vatten. Borstar du tänderna på detta sätt två gånger varje dag sparas 72 liter."
+},
+{
+	"question": "Att resa klimatsmart",
+	"description": "Rangordna bilderna i ordning efter hur klimatsmarta de är",
+	"answers": [
+		{
+			"id": 1,
+			"answer": "Bil"
+		},
+		{
+			"id": 2,
+			"answer": "Flygplan"
+		},
+		{
+			"id": 3,
+			"answer": "Tåg"
+		},
+		{
+			"id": 4,
+			"answer": "Gå eller cykla"
+		},
+		{
+			"id": 5,
+			"answer": "Buss"
+		}
+	],
+	"correctAnswer": [4, 3, 5, 1, 2],
+    "why": "Alla typer av fordon bidrar till utsläpp av gaser som inte är bra för vår planet. 
+    Ett flygplan har mycket större utsläpp än t.ex. en bil, medan ett tåg släpper ut mycket mindre per passagerare än både flygplan och bil. 
+    Bäst för miljön är att gå eller cykla om en kan göra det"
+},
+{
+	"question": "Återvinning & källsortering",
+	"description": "Dra och släpp ",
+	"answers": [
+		{
+			"id": 1,
+			"answer": "Plastpåse"
+		},
+		{
+			"id": 2,
+			"answer": "Konservburk"
+		},
+		{
+			"id": 3,
+			"answer": "Tidning"
+		},
+		{
+			"id": 4,
+			"answer": "Kartonger"
+		},
+		{
+			"id": 5,
+			"answer": "Glasflaska"
+		}
+	],
+	"correctAnswer": [],
+	"why": ""
+})
