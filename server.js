@@ -27,7 +27,7 @@ const Highscore = new mongoose.model('Highscore', {
 });
 
 // Mongoose model for questions
-const Question = new mongoose.model('Questions', {
+const Question = new mongoose.model('Question', {
 	description: { type: String },
 	question: {
 		type: String,
@@ -62,15 +62,48 @@ app.get('/', (req, res) => {
 	res.send(listEndpoints(app));
 });
 
-app.get('/highscore', (req, res) => {
-	res.send('Here goes the highscore');
+app.get('/highscore', async (req, res) => {
+	try {
+		const highscore = await Highscore.find()
+			.sort({ score: 'desc' })
+			.limit(10)
+			.exec();
+		res.json(highscore);
+	} catch (err) {
+		res.status(400).json({
+			success: false,
+			message: 'Could not get highscores',
+			errors: err.errors,
+		});
+	}
 });
 
-app.post('/highscore', (req, res) => {});
+app.post('/highscore', async (req, res) => {
+	const { name, score } = req.body;
+	const newHighscore = await new Highscore({ name, score });
+	try {
+		const savedHighscore = await newHighscore.save();
+		res.status(201).json(savedHighscore);
+	} catch (err) {
+		res.status(400).json({
+			success: false,
+			message: 'Could not post highscore',
+			errors: err.errors,
+		});
+	}
+});
 
 app.get('/questions', async (req, res) => {
-	const allQuestions = await Question.find();
-	res.json(allQuestions);
+	try {
+		const allQuestions = await Question.find();
+		res.json(allQuestions);
+	} catch (err) {
+		res.status(400).json({
+			success: false,
+			message: 'Could not get questions',
+			errors: err.errors,
+		});
+	}
 });
 
 // Start the server
