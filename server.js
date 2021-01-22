@@ -29,16 +29,9 @@ const Highscore = new mongoose.model('Highscore', {
 // Mongoose model for questions
 const Question = new mongoose.model('Question', {
 	description: { type: String },
-	question: {
-		type: String,
-		answers: [
-			{
-				id: { type: Number },
-				answer: { type: String },
-			},
-		],
-		correctAnswer: { type: Array },
-	},
+	question: { type: String },
+	answers: { type: Array },
+	correctAnswer: { type: Array },
 	why: { type: String },
 });
 
