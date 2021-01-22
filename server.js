@@ -3,6 +3,8 @@ import bodyParser from 'body-parser';
 import cors from 'cors';
 import mongoose from 'mongoose';
 
+import questions from './questions.json';
+
 // list endpoints in the '/' route
 const listEndpoints = require('express-list-endpoints');
 
@@ -16,6 +18,7 @@ const app = express();
 // Mongooose connection
 const mongoUrl = process.env.MONGO_URL || 'mongodb://localhost/8080';
 mongoose.connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.Promise = Promise;
 
 // Mongoose model for highscore
 const Highscore = new mongoose.model('Highscore', {
@@ -24,7 +27,7 @@ const Highscore = new mongoose.model('Highscore', {
 });
 
 // Mongoose model for questions
-const Questions = new mongoose.model('Questions', {
+const Question = new mongoose.model('Questions', {
 	description: { type: String },
 	question: {
 		type: String,
@@ -32,13 +35,23 @@ const Questions = new mongoose.model('Questions', {
 			{
 				id: { type: Number },
 				answer: { type: String },
-				isCorrect: { type: Boolean },
 			},
 		],
 		correctAnswer: { type: Array },
 	},
 	why: { type: String },
 });
+
+if (process.env.RESET_DATABASE) {
+	const populateDatabase = async () => {
+		await Question.deleteMany();
+		questions.forEach((item) => {
+			const newQuestion = new Question(item);
+			newQuestion.save();
+		});
+	};
+	populateDatabase();
+}
 
 // Add middlewares to enable cors and json body parsing
 app.use(cors());
@@ -55,7 +68,10 @@ app.get('/highscore', (req, res) => {
 
 app.post('/highscore', (req, res) => {});
 
-app.get('/questions', (req, res) => {});
+app.get('/questions', async (req, res) => {
+	const allQuestions = await Question.find();
+	res.json(allQuestions);
+});
 
 // Start the server
 app.listen(port, () => {
