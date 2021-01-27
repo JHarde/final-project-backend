@@ -63,11 +63,11 @@
 			{ "name": "RisiFrutti-lock", "type": "ItemTypes.METAL" }
 		],
 		"correctAnswer": [
-			{ "accepts": ["ItemTypes.GLASS"], "lastDroppedItem": null },
-			{ "accepts": ["ItemTypes.PLASTIC"], "lastDroppedItem": null },
-			{ "accepts": ["ItemTypes.PAPER"], "lastDroppedItem": null },
-			{ "accepts": ["ItemTypes.WELLPAPP"], "lastDroppedItem": null },
-			{ "accepts": ["ItemTypes.METAL"], "lastDroppedItem": null }
+			{ "accepts": { "ItemTypes": "GLASS" }, "lastDroppedItem": null },
+			{ "accepts": { "ItemTypes": "PLASTIC" }, "lastDroppedItem": null },
+			{ "accepts": { "ItemTypes": "PAPER" }, "lastDroppedItem": null },
+			{ "accepts": { "ItemTypes": "WELLPAPP" }, "lastDroppedItem": null },
+			{ "accepts": { "ItemTypes": "METAL" }, "lastDroppedItem": null }
 		],
 		"why": "Återvinning är bra för miljön eftersom förpackningarna som sorteras kan återvinnas och bli nya förpackningar."
 	}
