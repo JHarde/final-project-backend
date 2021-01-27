@@ -44,7 +44,7 @@
 				"answer": "Buss"
 			}
 		],
-		"correctAnswer": [4, 3, 5, 1, 2],
+		"correctAnswer": ["Gå eller cykla", "Tåg", "Buss", "Bil", "Flygplan"],
 		"why": "Alla typer av fordon bidrar till utsläpp av gaser som inte är bra för vår planet. Ett flygplan har mycket större utsläpp än t.ex. en bil, medan ett tåg släpper ut mycket mindre per passagerare än både flygplan och bil. Bäst för miljön är att gå eller cykla om en kan göra det."
 	},
 	{

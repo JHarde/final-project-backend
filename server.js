@@ -55,6 +55,7 @@ app.get('/', (req, res) => {
 	res.send(listEndpoints(app));
 });
 
+//get highscore
 app.get('/highscore', async (req, res) => {
 	try {
 		const highscore = await Highscore.find()
@@ -71,6 +72,7 @@ app.get('/highscore', async (req, res) => {
 	}
 });
 
+//post highscore
 app.post('/highscore', async (req, res) => {
 	const { name, score } = req.body;
 	const newHighscore = await new Highscore({ name, score });
@@ -86,6 +88,7 @@ app.post('/highscore', async (req, res) => {
 	}
 });
 
+//get questions and answers
 app.get('/questions', async (req, res) => {
 	try {
 		const allQuestions = await Question.find();
