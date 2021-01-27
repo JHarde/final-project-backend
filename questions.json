@@ -51,28 +51,24 @@
 		"question": "Återvinning & källsortering",
 		"description": "Dra och släpp ",
 		"answers": [
-			{
-				"id": 1,
-				"answer": "Plastpåse"
-			},
-			{
-				"id": 2,
-				"answer": "Konservburk"
-			},
-			{
-				"id": 3,
-				"answer": "Tidning"
-			},
-			{
-				"id": 4,
-				"answer": "Kartonger"
-			},
-			{
-				"id": 5,
-				"answer": "Glasflaska"
-			}
+			{ "name": "Tidning", "type": "ItemTypes.PAPER" },
+			{ "name": "Konservburk", "type": "ItemTypes.METAL" },
+			{ "name": "Mjölk-kartong", "type": "ItemTypes.WELLPAPP" },
+			{ "name": "Syltburk", "type": "ItemTypes.GLASS" },
+			{ "name": "Plastpåse", "type": "ItemTypes.PLASTIC" },
+			{ "name": "Glasflaska", "type": "ItemTypes.GLASS" },
+			{ "name": "Reklamblad", "type": "ItemTypes.PAPER" },
+			{ "name": "Bubbelplast", "type": "ItemTypes.PLASTIC" },
+			{ "name": "RisiFrutti-burk", "type": "ItemTypes.PLASTIC" },
+			{ "name": "RisiFrutti-lock", "type": "ItemTypes.METAL" }
 		],
-		"correctAnswer": [1, 2, 3, 4, 5],
+		"correctAnswer": [
+			{ "accepts": ["ItemTypes.GLASS"], "lastDroppedItem": null },
+			{ "accepts": ["ItemTypes.PLASTIC"], "lastDroppedItem": null },
+			{ "accepts": ["ItemTypes.PAPER"], "lastDroppedItem": null },
+			{ "accepts": ["ItemTypes.WELLPAPP"], "lastDroppedItem": null },
+			{ "accepts": ["ItemTypes.METAL"], "lastDroppedItem": null }
+		],
 		"why": "Återvinning är bra för miljön eftersom förpackningarna som sorteras kan återvinnas och bli nya förpackningar."
 	}
 ]
