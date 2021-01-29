@@ -66,27 +66,27 @@
 			{
 				"accepts": ["ItemTypes.GLASS"],
 				"lastDroppedItem": null,
-				"image": "Glas.svg"
+				"image": "./assets/Glas.svg"
 			},
 			{
 				"accepts": ["ItemTypes.PLASTIC"],
 				"lastDroppedItem": null,
-				"image": "Plast.svg"
+				"image": "./assets/Plast.svg"
 			},
 			{
 				"accepts": ["ItemTypes.PAPER"],
 				"lastDroppedItem": null,
-				"image": "Papper.svg"
+				"image": "./assets/Papper.svg"
 			},
 			{
 				"accepts": ["ItemTypes.WELLPAPP"],
 				"lastDroppedItem": null,
-				"image": "Kartong.svg"
+				"image": "./assets/Kartong.svg"
 			},
 			{
 				"accepts": ["ItemTypes.METAL"],
 				"lastDroppedItem": null,
-				"image": "Metall.svg"
+				"image": "./assets/Metall.svg"
 			}
 		],
 		"why": "Återvinning är bra för miljön eftersom förpackningarna som sorteras kan återvinnas och bli nya förpackningar."
