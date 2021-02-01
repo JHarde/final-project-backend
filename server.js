@@ -2,6 +2,8 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import cors from 'cors';
 import mongoose from 'mongoose';
+import crypto from 'crypto';
+import bcrypt from 'bcrypt';
 
 import questions from './questions.json';
 
@@ -19,6 +21,52 @@ const app = express();
 const mongoUrl = process.env.MONGO_URL || 'mongodb://localhost/8080';
 mongoose.connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true });
 mongoose.Promise = Promise;
+
+const userSchema = new mongoose.Schema({
+	name: {
+		type: String,
+		unique: true,
+		required: true,
+	},
+	password: {
+		type: String,
+		unique: true,
+		minLength: 5,
+	},
+	accessToken: {
+		type: String,
+		default: () => crypto.randomBytes(128).toString('hex'),
+		unique: true,
+	},
+});
+
+userSchema.pre('save', async function (next) {
+	const user = this;
+	if (!user.isModified('password')) {
+		return next();
+	}
+	const salt = bcrypt.genSaltSync();
+	user.password = bcrypt.hashSync(user.password, salt);
+	next();
+});
+
+const authenticateUser = async (req, res, next) => {
+	try {
+		const accessToken = req.header('Authorization');
+		const user = await user.findOne({ accessToken });
+		if (!user) {
+			throw 'User not found';
+		}
+		req.user = user;
+		next();
+	} catch (err) {
+		const errorMessage = 'Login failed, try again';
+		res.status(401).json({ error: errorMessage });
+	}
+};
+
+// Mongoose model for user
+const User = mongoose.model('User', userSchema);
 
 // Mongoose model for highscore
 const Highscore = new mongoose.model('Highscore', {
@@ -53,6 +101,35 @@ app.use(bodyParser.json());
 // List endpoints
 app.get('/', (req, res) => {
 	res.send(listEndpoints(app));
+});
+
+// Sign up
+app.post('/users', async (req, res) => {
+	try {
+		const { name, password } = req.body;
+		const user = await new User({
+			name,
+			password,
+		}).save();
+		res.status(200).json({ userId: user._id, accessToken: user.accessToken });
+	} catch (err) {
+		res.status(400).json({ message: 'Could not create user', errors: err });
+	}
+});
+
+// Login
+app.post('/sessions', async (req, res) => {
+	try {
+		const { name, password } = req.body;
+		const user = await user.findOne({ name });
+		if (user && bcrypt.compareSync(password, user.password)) {
+			res.status(200).json({ userid: user._id, accessToken: user.accessToken });
+		} else {
+			throw 'User not found';
+		}
+	} catch (err) {
+		res.status(404).json({ error: 'User not found' });
+	}
 });
 
 //get highscore
