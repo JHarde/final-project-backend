@@ -121,9 +121,18 @@ app.post("/users", async (req, res) => {
 app.post("/sessions", async (req, res) => {
   try {
     const { name, password } = req.body;
+    const accessTokenUpdate = crypto.randomBytes(128).toString("hex");
     const user = await User.findOne({ name: name });
     if (user && bcrypt.compareSync(password, user.password)) {
-      res.status(200).json({ userId: user._id, accessToken: user.accessToken });
+      const updatedUser = await User.findOneAndUpdate(
+        { name: name },
+        { accessToken: accessTokenUpdate },
+        { new: true, useFindAndModify: false }
+      );
+      res.status(200).json({
+        userId: updatedUser._id,
+        accessToken: updatedUser.accessToken,
+      });
     } else {
       throw "User not found";
     }
