@@ -25,23 +25,28 @@
 		"answers": [
 			{
 				"id": 1,
-				"answer": "Bil"
+				"answer": "Bil",
+				"image": "Car.svg"
 			},
 			{
 				"id": 2,
-				"answer": "Flygplan"
+				"answer": "Flygplan",
+				"image": "Airplane.svg"
 			},
 			{
 				"id": 3,
-				"answer": "Tåg"
+				"answer": "Tåg",
+				"image": "Train.svg"
 			},
 			{
 				"id": 4,
-				"answer": "Gå eller cykla"
+				"answer": "Gå eller cykla",
+				"image": "Bike.svg"
 			},
 			{
 				"id": 5,
-				"answer": "Buss"
+				"answer": "Buss",
+				"image": "Bus.svg"
 			}
 		],
 		"correctAnswer": ["Gå eller cykla", "Tåg", "Buss", "Bil", "Flygplan"],
