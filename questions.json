@@ -51,42 +51,42 @@
 		"question": "Återvinning & källsortering",
 		"description": "Dra och släpp ",
 		"answers": [
-			{ "name": "Tidning", "type": "ItemTypes.PAPER" },
-			{ "name": "Konservburk", "type": "ItemTypes.METAL" },
-			{ "name": "Mjölk-kartong", "type": "ItemTypes.WELLPAPP" },
-			{ "name": "Syltburk", "type": "ItemTypes.GLASS" },
-			{ "name": "Plastpåse", "type": "ItemTypes.PLASTIC" },
-			{ "name": "Glasflaska", "type": "ItemTypes.GLASS" },
-			{ "name": "Reklamblad", "type": "ItemTypes.PAPER" },
-			{ "name": "Bubbelplast", "type": "ItemTypes.PLASTIC" },
-			{ "name": "RisiFrutti-burk", "type": "ItemTypes.PLASTIC" },
-			{ "name": "RisiFrutti-lock", "type": "ItemTypes.METAL" }
+			{ "name": "Tidning", "type": "ItemTypes.PAPER", "image": "" },
+			{ "name": "Konservburk", "type": "ItemTypes.METAL", "image": "" },
+			{ "name": "Mjölk-kartong", "type": "ItemTypes.WELLPAPP", "image": "" },
+			{ "name": "Syltburk", "type": "ItemTypes.GLASS", "image": "" },
+			{ "name": "Plastpåse", "type": "ItemTypes.PLASTIC", "image": "" },
+			{ "name": "Glasflaska", "type": "ItemTypes.GLASS", "image": "" },
+			{ "name": "Reklamblad", "type": "ItemTypes.PAPER", "image": "" },
+			{ "name": "Bubbelplast", "type": "ItemTypes.PLASTIC", "image": "" },
+			{ "name": "RisiFrutti-burk", "type": "ItemTypes.PLASTIC", "image": "" },
+			{ "name": "RisiFrutti-lock", "type": "ItemTypes.METAL", "image": "" }
 		],
 		"correctAnswer": [
 			{
 				"accepts": ["ItemTypes.GLASS"],
 				"lastDroppedItem": null,
-				"image": "../assets/Glas.svg"
+				"image": "Glas.svg"
 			},
 			{
 				"accepts": ["ItemTypes.PLASTIC"],
 				"lastDroppedItem": null,
-				"image": "../assets/Plast.svg"
+				"image": "Plast.svg"
 			},
 			{
 				"accepts": ["ItemTypes.PAPER"],
 				"lastDroppedItem": null,
-				"image": "../assets/Papper.svg"
+				"image": "Papper.svg"
 			},
 			{
 				"accepts": ["ItemTypes.WELLPAPP"],
 				"lastDroppedItem": null,
-				"image": "../assets/Kartong.svg"
+				"image": "Kartong.svg"
 			},
 			{
 				"accepts": ["ItemTypes.METAL"],
 				"lastDroppedItem": null,
-				"image": "../assets/Metall.svg"
+				"image": "Metall.svg"
 			}
 		],
 		"why": "Återvinning är bra för miljön eftersom förpackningarna som sorteras kan återvinnas och bli nya förpackningar."
