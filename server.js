@@ -141,6 +141,24 @@ app.post("/sessions", async (req, res) => {
   }
 });
 
+app.post("/logout", async (req, res) => {
+  try {
+    const { userId } = req.body;
+    const updatedUser = await User.findOneAndUpdate(
+      {_id: userId}, 
+      {accessToken: null},
+      {new: true, useFindAndModify: false}
+    );
+    res.status(200).json({
+      userId: updatedUser._id,
+      accessToken: updatedUser.accessToken,
+    });
+  } catch (err) {
+    res.status(400).json({error: err, message: "Could not log out"});
+  }
+
+});
+
 //get highscore
 app.get("/highscore", async (req, res) => {
   try {
