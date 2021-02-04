@@ -141,6 +141,7 @@ app.post("/sessions", async (req, res) => {
   }
 });
 
+// Logout
 app.post("/logout", async (req, res) => {
   try {
     const { userId } = req.body;
