@@ -38,6 +38,10 @@ const userSchema = new mongoose.Schema({
     default: () => crypto.randomBytes(128).toString("hex"),
     unique: true,
   },
+  score: {
+    type: Number,
+    default: 0
+  }
 });
 
 userSchema.pre("save", async function (next) {
@@ -132,6 +136,7 @@ app.post("/sessions", async (req, res) => {
       res.status(200).json({
         userId: updatedUser._id,
         accessToken: updatedUser.accessToken,
+        score: updatedUser.score
       });
     } else {
       throw "User not found";
@@ -156,6 +161,24 @@ app.post("/logout", async (req, res) => {
     });
   } catch (err) {
     res.status(400).json({error: err, message: "Could not log out"});
+  }
+
+});
+
+// Update Score
+app.post("/userscore", async (req, res) => {
+  try {
+    const { userId, scoreNumber } = req.body;
+    const updatedUser = await User.findOneAndUpdate(
+      {_id: userId}, 
+      {$inc: {score: scoreNumber}},
+      {new: true, useFindAndModify: false}
+    );
+    res.status(200).json({
+      score: updatedUser.score,
+    });
+  } catch (err) {
+    res.status(400).json({error: err, message: "Could not update score"});
   }
 
 });
