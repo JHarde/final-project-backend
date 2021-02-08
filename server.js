@@ -136,7 +136,8 @@ app.post("/sessions", async (req, res) => {
       res.status(200).json({
         userId: updatedUser._id,
         accessToken: updatedUser.accessToken,
-        score: updatedUser.score
+        score: updatedUser.score,
+        userName: updatedUser.name
       });
     } else {
       throw "User not found";
