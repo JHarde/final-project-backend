@@ -44,7 +44,7 @@ const userSchema = new mongoose.Schema({
 	},
 	completedTasks: {
 		type: Array,
-	}
+	},
 });
 
 userSchema.pre('save', async function (next) {
@@ -174,7 +174,7 @@ app.post('/userscore', async (req, res) => {
 		const { userId, scoreNumber, task } = req.body;
 		const updatedUser = await User.findOneAndUpdate(
 			{ _id: userId },
-			{ $inc: { score: scoreNumber }, $push: {completedTasks: task} },
+			{ $inc: { score: scoreNumber }, $push: { completedTasks: task } },
 			{ new: true, useFindAndModify: false }
 		);
 		res.status(200).json({
@@ -203,7 +203,7 @@ app.get('/highscore', async (req, res) => {
 	}
 });
 
-//post highscore or update existing highscore
+//post highscore or update existing highscore if user exists
 app.post('/highscore', async (req, res) => {
 	const { name, score } = req.body;
 	const newHighscore = await new Highscore({ name, score });
