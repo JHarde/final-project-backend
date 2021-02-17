@@ -141,6 +141,7 @@ app.post('/sessions', async (req, res) => {
 				accessToken: updatedUser.accessToken,
 				score: updatedUser.score,
 				userName: updatedUser.name,
+				completedTasks: updatedUser.completedTasks,
 			});
 		} else {
 			throw 'User not found';
