@@ -174,7 +174,7 @@ app.post('/userscore', async (req, res) => {
 		const { userId, scoreNumber, task } = req.body;
 		const updatedUser = await User.findOneAndUpdate(
 			{ _id: userId },
-			{ $inc: { score: scoreNumber }, completedTasks: [...completedTasks, task] },
+			{ $inc: { score: scoreNumber }, $push: {completedTasks: task} },
 			{ new: true, useFindAndModify: false }
 		);
 		res.status(200).json({
