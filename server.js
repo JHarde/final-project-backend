@@ -179,6 +179,7 @@ app.post('/userscore', async (req, res) => {
 		);
 		res.status(200).json({
 			score: updatedUser.score,
+			completedTasks: updatedUser.completedTasks,
 		});
 	} catch (err) {
 		res.status(400).json({ error: err, message: 'Could not update score' });
